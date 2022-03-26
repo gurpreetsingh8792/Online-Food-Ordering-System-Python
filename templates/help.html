@@ -1,0 +1,176 @@
+<html>
+<head>
+<link type="text/css" href="{{url_for('static',filename='webpages.css')}}" rel="stylesheet"/>
+
+<style>
+
+body
+{
+	background-color:rgb(180,180,180);
+	margin:0;
+}
+
+.content		/* whole box */
+{
+	background-color:white;
+	margin-left:300px;
+	display:inline-block;
+	margin-right:300px;
+}
+.content1			/* top part of box */
+{
+	background-color:rgb(150,150,150);
+	font-size:22px;
+	width:620px;
+	padding-left:10px;
+	padding-top:10px;
+	text-align:center;
+
+}
+.content2			/* lower part of box */
+{
+	font-family: "Open Sans";
+
+	background-color:white;
+	font-size:15px;
+	padding:15px;
+	
+}
+</style>
+
+<body>
+<h1>
+<a href="/">
+<img src="{{url_for('static',filename='food.jpg')}}"  width="80" height="60"></a>
+<span class="h1span">
+
+Go Foody
+</span>
+
+<span>
+
+<a href="/help" class="help_no_user">HELP</></a>
+</span>
+</h1>
+
+<br><br><br><br>
+<div class="content">
+	<div class="content1">
+		<b>Help</b>
+	</div>	
+	<div class="content2">
+		
+			<b>Where is my order?</b><br>
+			<br>After you place your order, we send it directly to the restaurant, which starts<br> preparing it immediately.<br><br>
+
+			Our restaurants do everything they can to get your food delivered as quickly as<br> possible. However, sometimes restaurants receive very large amount of orders, or<br> drivers get stuck in heavy traffic - this unfortunately might cause delays.<br><br>
+
+			If the amount of time you’ve waited has exceeded the estimated delivery time, you<br> can contact us and we’ll look into what’s going on.<br><br>
+			
+			<b>How to order online at GoFoody?</b><br><br>
+			
+			It is really easy, as easy as 1, 2, 3:<br><br>
+
+			1. Tell us where you are: Enter your location so that we can show you which<br> restaurants deliver to you.<br>
+			2. Choose what you would like: Pick a restaurant and select items you’d like to order.<br> You can search by restaurant name, cuisine type, dish name or by keyword.<br>
+			3. Checkout: Enter your exact delivery address, payment method and your phone<br> number. Always make sure that you enter the correct phone number to help us<br> contact you regarding your order, if needed.<br><br>
+
+			Now sit back, relax, and we’ll get your food delivered to your doorstep.<br><br>
+			
+			<b>How long does it take for my order to get delivered?</b><br><br>
+			
+			Delivery time varies from restaurant to restaurant. It also depends on the number of<br> orders that the restaurant has to prepare and on the distance between the restaurant<br> and your delivery address.<br><br>
+			
+			<b>How can I pay for my order?</b><br><br>
+			
+			All our restaurants accept cash on delivery. In addition, there are various online<br> payment methods available. You can check which payment methods are accepted at<br> each restaurant by going to the ‘Info’ tab on the restaurant’s page.<br><br>
+
+			<b>Cash on Delivery</b><br>
+
+			Select ‘Cash on Delivery’ on the checkout page and pay the driver at your doorstep<br> when you receive your order.<br><br>
+
+			<b>Credit Card</b><br>
+
+			Select ‘Credit Card’ on the checkout page. After placing your order you will be<br> redirected to the secure payment page of our payment partner, where you can follow<br> the instructions. Once the payment is confirmed, the<br> order will be transmitted to the restaurant.<br>
+
+		
+	</div>	
+
+</div>
+
+<br><br><br><br>
+
+
+<!-- menu -->
+	<nav class="nav">
+		<img class="menu_image" src="{{url_for('static',filename='food.jpg')}}"  width="70" height="70">
+		<br>
+		<span class="menu_heading">Go Foody</span>
+		<ul>
+			<li><a class="nava" href="{{path}}">Home</a></li>
+			<li><a class="nava" href="/about">About Us</a></li>
+			<li><a class="nava" href="/contact">Contact</a></li>
+			<li><a class="nava" href="/privacy_policy">Privacy Policy</a></li>
+			<li><a class="nava" href="/security">Security</a></li>		
+			<li><a class="nava" href="/terms">Terms</a></li>		
+
+		</ul>
+	</nav>
+
+
+
+<div class="last" >
+<br>
+<div class="motto">
+We uphold the motto <span class="bullet">“making online food ordering fast and easy”</span>. Our service allows you<br> to find all of the restaurants available nearby, which can deliver to your house
+</div>
+<br><br>
+<b><span class="head_left">Ordering food is easy as ABC Only 4 steps to make the order, easy payment, available 24/7</span>
+</b>
+
+<div class="definition">
+<br><br>
+The challenge for us is to make a versatile website that is simple and easy to use.<br>
+What we have learned is that ordering food online is way easier, faster and has <br>
+less complications than calling. What makes Go Foody better than the traditional order<br>
+over the phone method?
+
+<ul class="bullet"><li><span style="color:rgb(200,200,200);">24/7: Our site and app are available 24/7 with the feature to pre-order. You can plan your <br>
+meal ahead from the best restaurants near you and avoid the rush hours</span></li>
+<li><span style="color:rgb(200,200,200);">Free to use: Browse through 4000+ restaurant menus for free</span></li>
+<li><span style="color:rgb(200,200,200);">Order food in 4 simple steps</span></li>
+<li><span style="color:rgb(200,200,200);">Easy Payment: Do you prefer online payment? We accept all major credit cards as well as</li>
+<li><span style="color:rgb(200,200,200);">If you prefer to pay cash on delivery in Indian Rupees, we’ve got that covered too.</span></li>
+</ul>
+</div>
+<br><hr width="90%"><br>
+<div class="services">
+<b><span class="head_right">Our Services</span></b>
+<br><br>
+Should you have any concerns or would you want to give us feedback, please do not hesitate to contact our customer service
+team by using our Live Chat feature on your GoFoody App or website, or by sending an email at customercare@variable.in. 
+Go Foody India Corporate Office is located at Kayyath Villa, Kayyath Road , Thalassery.
+</div>
+
+<br><hr width="90%"><br>
+<b><span class="head_left">Freedom of Choice </span></b><br><br>
+<div class="freedom">
+
+<span class="bullet">Breakfast, Lunch, Dinner or Late Night delivery</span> Go Foody is just the right place for you. 
+<br>Simply pick one of the thousands of diverse restaurants available near you. From traditional meals to
+<br>well-known fast food chains like Dominos, Pizza Hut and Box8 along with delicate cuisines such
+<br> as Japanese, Biryani or Punjabi - you can find it all! All it takes is 4 easy steps:
+
+<ol class="bullet"><li><span style="color:rgb(200,200,200);">Choose your city and area</span></li>
+<li><span style="color:rgb(200,200,200);">Pick one of the 10000+ restaurant</span></li>
+<li><span style="color:rgb(200,200,200);">Place your order and pay online or cash on delivery</span></li>
+<li><span style="color:rgb(200,200,200);">Enjoy the freshly prepared food delivered to you!</span></li>
+</ol>
+
+</div>
+
+<br><br>
+
+</div>
+</body>
+</html>

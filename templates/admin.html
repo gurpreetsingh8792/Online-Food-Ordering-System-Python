@@ -1,0 +1,455 @@
+<html>
+<head>
+<link type="text/css" href="{{url_for('static',filename='webpages.css')}}" rel="stylesheet"/>
+
+<script type="text/javascript" src="{{url_for('static',filename='alert/alertify.min.js')}}"></script>
+<link rel="stylesheet" href="{{url_for('static',filename='alert/alertify.default.css')}}">
+<link rel="stylesheet" href="{{url_for('static',filename='alert/alertify.core.css')}}">
+
+
+<style>
+
+ul.tab {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+	
+}
+
+/* Float the list items side by side */
+ul.tab li {float: left;}
+
+/* Style the links inside the list items */
+ul.tab li a {
+    display: inline-block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of links on hover */
+ul.tab li a:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+ul.tab li a:focus, .active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+    animation: fadeEffect 2s;
+}
+/* Fade in tabs */
+@-webkit-keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+#manage
+{
+	background-color:rgb(250,250,250);
+}
+.content2
+{
+			margin-left:50px;
+			margin-right:170px;
+			background:rgba(255,255,255,0.2);   /* to reduce opacity without effecting inner contents*/
+}
+.heading
+{
+		font-family:"Code Bold";
+		padding:25px;
+		color:black;
+		font-size:28px;
+		
+}
+.box
+{
+		border-style:solid;
+		border-width:1px;
+		border-color:rgb(245,245,245);
+		margin-right:20px;
+		margin-top:20px;
+		height:"";
+		max-height:"";
+		vertical-align:top;
+		display:inline-block;
+		font-family:"Cormorant Garamond Medium";
+		font-weight:bold;
+		font-size:19px;
+		padding:5px;
+		background-color:rgb(245,245,245);
+	    box-shadow: 10px 10px 5px #888888;
+		width:250px;
+}
+.image
+{
+		 display: block;
+		margin-left: auto;
+		margin-right: auto			/* to diplay in center horizontally*/
+}
+.message_content
+{
+		
+		border-style:solid;
+		border-width:1px;
+		border-color:rgb(245,245,245);
+		margin-right:20px;
+		font-family:"Cormorant Garamond Medium";
+		font-weight:bold;
+		font-size:19px;
+		width:80%;
+		padding-bottom:25px;
+		padding-right:5px;
+		padding-left:10px;
+		background-color:rgb(245,245,245);
+	    box-shadow: 10px 10px 5px #888888;
+}
+.removea
+{
+		text-decoration:none;
+		color:rgb(150,10,10);
+		float:right;
+		
+}
+.remove_rest_a
+{
+		text-decoration:none;
+		color:rgb(150,10,10);
+}
+
+.no
+{
+		font-size:20px;
+		font-family:"Cormorant Garamond Medium";
+
+}
+.notify
+{
+		text-decoration:none;
+		color:rgb(10,120,10);
+		float:right;
+}
+.replya
+{
+	text-decoration:none;
+	color:rgb(10,120,10);
+	float:left;
+}
+	
+</style>
+
+<script>
+document.getElementsByClassName('tablinks')[0].click();
+
+function func(evt, variable) 
+{
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(variable).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+
+
+</script>
+<body>
+
+<h1>
+
+<img src="{{url_for('static',filename='food.jpg')}}"  width="80" height="60">
+<span class="h1span">
+
+Go Foody
+</span>
+
+<span>
+<a href="/admin_review" class="help_admin">REVIEWS</a>
+<a href="/help" class="help">HELP</a>
+</span>
+</h1>
+
+
+
+
+
+
+<ul class="tab">
+  <li><a href="javascript:void(0)" class="tablinks" onclick="func(event, 'requests')">requests</a></li>
+  <li><a href="javascript:void(0)" class="tablinks" onclick="func(event, 'messages')">messages</a></li>
+  <li><a href="javascript:void(0)" class="tablinks" onclick="func(event, 'manage')">manage</a></li>
+
+</ul>
+
+<div id="requests" class="tabcontent">
+
+{% if (var is defined) and var %}
+
+		<div class="content2">
+		<br>
+		{%for x in var%}
+		<div class="box">
+				<img class="image" src="{{url_for('static',filename='restaurants/'+x[2])}}" height="100" width="100"/>
+				<br>
+				name={{x[0]}}
+				<br>
+				location={{x[4]}}
+				<br>
+				place={{x[3]}}
+				<br>
+				phone={{x[5]}}
+				<br>
+				working hours : {{x[6]}} to {{x[7]}}
+				<br>
+				<a class="removea" href="/admin_remove/{{x[0]}}/{{x[3]}}">remove</a>
+				<a class="replya" href="/admin_approve/{{x[0]}}/{{x[3]}}">approve</a>	
+					
+				<br>
+			
+			
+		</div>	
+		{%endfor%}
+		<br>
+		<br>
+	</div>
+
+	<br>
+
+{%else%}
+	<span class="no">no requests are pending now</span>
+{%endif%}
+</div>
+
+<div id="messages" class="tabcontent">
+
+{% if (var_message is defined) and var_message %}
+
+	{%for x in var_message%}
+	<div class="message_content">
+	From : {{x[0]}}
+	<br>
+	subject : {{x[1]}}
+	<br>
+	message : {{x[2]}}
+	<br>
+	{% for y in customers %}
+		{%if x[0] ==y[0]%}
+		<a class="replya" href="/response_form/{{x[0]}}/{{x[1]}}">reply</a>
+		{%endif%}
+	{%endfor%}	
+	<a  class="removea" href="/admin_message_remove/{{x[0]}}/{{x[1]}}">remove</a>
+	</div>
+	<br>
+	{%endfor%}
+	<br><br><br>
+
+{%else%}
+	<span class="no">no messages recieved</span>
+
+{% endif%}
+</div>
+
+<div id="manage" class="tabcontent">
+
+{% if (var_TLY is defined) and var_TLY %}
+	<div class="content2">
+		<br>
+		<span class="heading">TLY</span>
+		<br>
+		<br>
+		{%for x in var_TLY%}
+		<div class="box">
+				<img class="image" src="{{url_for('static',filename='restaurants/'+x[2])}}" height="100" width="100"/>
+				<br>
+				username : {{x[0]}}
+				<br>
+				location : {{x[4]}}
+				<br>
+				phone : {{x[5]}}
+				<br>
+				working hours : {{x[6]}} to {{x[7]}}
+				<br>
+				<a class="remove_rest_a" href="/admin_manage_remove/{{x[0]}}/{{x[3]}}">remove</a>
+				<a href="/notification_form/{{x[0]}}/{{x[3]}}" class="notify" >notify</a>
+
+			
+
+				<br>
+			
+			
+		</div>	
+		{%endfor%}
+		<br>
+		<br>
+	</div>
+{%endif%}
+
+
+
+{% if (var_KANNUR is defined) and var_KANNUR %}
+	<div class="content2">
+		<br>
+		<span class="heading">KANNUR</span>
+		<br>
+		<br>
+		{%for x in var_KANNUR%}
+		<div class="box">
+				<img class="image" src="{{url_for('static',filename='restaurants/'+x[2])}}" height="100" width="100"/>
+				<br>
+				username : {{x[0]}}
+				<br>
+				location : {{x[4]}}
+				<br>
+				phone : {{x[5]}}
+				<br>
+				working hours : {{x[6]}} to {{x[7]}}
+				<br>
+				<a class="remove_rest_a" href="/admin_manage_remove/{{x[0]}}/{{x[3]}}">remove</a>
+				<a href="/notification_form/{{x[0]}}/{{x[3]}}" class="notify" >notify</a>
+
+			
+				<br>
+			
+			
+		</div>	
+		{%endfor%}
+		<br>
+		<br>
+	</div>
+{%endif%}
+
+
+
+{% if (var_CALICUT is defined) and var_CALICUT %}
+	<div class="content2">
+		<br>
+		<span class="heading">CALICUT</span>
+		<br>
+		<br>
+		{%for x in var_CALICUT%}
+		<div class="box">
+				<img class="image" src="{{url_for('static',filename='restaurants/'+x[2])}}" height="100" width="100"/>
+				<br>
+				username : {{x[0]}}
+				<br>
+				location : {{x[4]}}
+				<br>
+				phone : {{x[5]}}
+				<br>
+				working hours : {{x[6]}} to {{x[7]}}
+				<br>
+				<a class="remove_rest_a" href="/admin_manage_remove/{{x[0]}}/{{x[3]}}">remove</a>
+				<a href="/notification_form/{{x[0]}}/{{x[3]}}" class="notify" >notify</a>
+
+				
+				<br>
+			
+			
+		</div>	
+		{%endfor%}
+		<br>
+		<br>
+	</div>
+{%endif%}
+
+</div>
+
+
+
+<!-- menu -->
+	<nav>
+		<img class="menu_image" src="{{url_for('static',filename='food.jpg')}}"  width="70" height="70">
+		<br>
+		<span class="menu_heading">Go Foody</span>
+		<ul>
+			<li><a class="nava" href="/">Home</a></li>
+			<li><a class="nava" href="/about">About Us</a></li>
+			<li><a class="nava" href="/contact">Contact</a></li>
+			<li><a class="nava" href="/privacy_policy">Privacy Policy</a></li>
+			<li><a class="nava" href="/security">Security</a></li>		
+			<li><a class="nava" href="/terms">Terms</a></li>		
+
+		</ul>
+	</nav>
+
+
+
+<div class="last" >
+<br>
+<div class="motto">
+We still uphold the same motto <span class="bullet">“making online food ordering fast and easy”</span>. Our service allows you<br> to find all of the restaurants available nearby, which can deliver to your house
+</div>
+<br><br>
+<b><span class="head_left">Ordering food is easy as ABC Only 4 steps to make the order, easy payment, available 24/7</span>
+</b>
+
+<div class="definition">
+<br><br>
+The <span class="bullet">challenge</span> for us is to make a versatile website that is simple and easy to use.<br>
+What we have learned is that ordering food online is way easier, faster and has <br>
+less complications than calling. What makes Go Foody better than the traditional order<br>
+over the phone method?
+
+<ul class="bullet"><li><span style="color:rgb(200,200,200);">24/7: Our site and app are available 24/7 with the feature to pre-order. You can plan your <br>
+meal ahead from the best restaurants near you and avoid the rush hours</span></li>
+<li><span style="color:rgb(200,200,200);">Free to use: Browse through 4000+ restaurant menus for free</span></li>
+<li><span style="color:rgb(200,200,200);">Order food in 4 simple steps</span></li>
+<li><span style="color:rgb(200,200,200);">Easy Payment: Do you prefer online payment? We accept all major credit cards as well as</li>
+<li><span style="color:rgb(200,200,200);">If you prefer to pay cash on delivery in Indian Rupees, we’ve got that covered too.</span></li>
+</ul>
+</div>
+<br><hr width="90%"><br>
+<div class="services">
+<b><span class="head_right">Our Services</span></b>
+<br><br>
+Should you have any concerns or would you want to give us feedback, please do not hesitate to contact our customer service
+team by using our Live Chat feature on your GoFoody App or website, or by sending an email at customercare@GoFoody.in. 
+Go Foody India Corporate Office is located at Kayyath Villa, Kayyath Road , Thalassery.
+</div>
+
+<br><hr width="90%"><br>
+<b><span class="head_left">Freedom of Choice </span></b><br><br>
+<div class="freedom">
+
+<span class="bullet">Breakfast, Lunch, Dinner or Late Night delivery</span> Go Foody is just the right place for you. 
+<br>Simply pick one of the thousands of diverse restaurants available near you. From traditional meals to
+<br>well-known fast food chains like Dominos, Pizza Hut and Box8 along with delicate cuisines such
+<br> as Japanese, Biryani or Punjabi - you can find it all! All it takes is 4 easy steps:
+
+<ol class="bullet"><li><span style="color:rgb(200,200,200);">Choose your city and area</span></li>
+<li><span style="color:rgb(200,200,200);">Pick one of the 10000+ restaurant</span></li>
+<li><span style="color:rgb(200,200,200);">Place your order and pay online or cash on delivery</span></li>
+<li><span style="color:rgb(200,200,200);">Enjoy the freshly prepared food delivered to you!</span></li>
+</ol>
+
+</div>
+
+<br><br>
+
+
+</div>
+</body>
+</html>

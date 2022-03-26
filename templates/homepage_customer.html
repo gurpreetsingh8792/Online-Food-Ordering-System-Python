@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link type="text/css" href="{{url_for('static',filename='homepage.css')}}" rel="stylesheet"/>
+
+		<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='search/css/default.css')}}" />
+		<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='search/css/component.css')}}" />
+		<script src="{{url_for('static',filename='search/js/modernizr.custom.js')}}"></script>
+		
+		
+	
+		
+		
+		
+<style>
+
+body
+{
+	background-color:white;
+}
+.content{	
+			opacity:0.5;
+			background-size: contain;
+			background-blend-mode: lighten;
+			width:4573px;
+			height:742px;
+			animation: slide 10s linear infinite alternate;
+			background: url("{{url_for('static',filename='background2.png')}}");
+		  	background-repeat: repeat-x;
+			position:absolute;
+		    z-index: -1;
+
+	
+		}
+.search
+{
+		font-size:18px;
+		position:relative;
+		margin-left:410px;
+		bottom:3px;
+		
+}
+
+
+.form1
+{
+		display:inline-block;			/*to make form appear on same line*/
+}
+.search-box
+{
+	border-style:solid;
+	border-radius:3px;
+	border-color:rgb(210,210,210);
+	background-color:rgb(210,210,210);
+	color:black;
+	padding:3px;
+}
+.search-icon
+{
+	background-color:black;
+	color:white;
+	border-color:black;
+
+}
+
+.top
+{
+background:rgba(255,255,255,0.4);
+}
+.crossfade > figure {
+  animation: imageAnimation 20s linear infinite 0s;
+	background-size: cover;
+	
+  color: transparent;
+  height: 800px;
+  opacity: 0;
+  position: absolute;
+  top: 0px;
+  width: 1400px;
+  z-index: -1;
+  margin-left:0px;
+}
+.crossfade > figure:nth-child(1) { background-image: url('{{url_for('static',filename='11.jpg')}}'); }
+
+.crossfade > figure:nth-child(2) {
+  animation-delay: 4s;
+  background-image: url('{{url_for('static',filename='15.jpg')}}');
+}
+
+.crossfade > figure:nth-child(3) {
+  animation-delay: 8s;
+  background-image: url('{{url_for('static',filename='13.jpg')}}');
+}
+
+.crossfade > figure:nth-child(4) {
+  animation-delay: 12s;
+  background-image: url('{{url_for('static',filename='14.jpg')}}');
+}
+
+.crossfade > figure:nth-child(5) {
+  animation-delay: 16s;
+  background-image: url('{{url_for('static',filename='12.jpg')}}');
+}
+@keyframes 
+imageAnimation
+ { 
+ 0% {
+ animation-timing-function: ease-in;
+ opacity: 0;
+}
+ 8% {
+ animation-timing-function: ease-out;
+ opacity: 1;
+}
+ 17% {
+ opacity: 1
+}
+ 25% {
+ opacity: 0
+}
+ 100% {
+ opacity: 0
+}
+}
+
+
+
+/* for pop up */
+.button {
+ 
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+  font-family:'Times New Roman';
+		font-size:15px;
+		color:rgb(130,130,130);
+		text-decoration: none;
+}
+.button:hover {
+	
+	color:rgb(240,240,240);
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 30%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: #333;
+   text-align:center;
+   font-size:16px;
+   font-family:"Lemonada";
+
+}
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.popup .close:hover {
+  color: #06D85F;
+}
+.popup .content22 {
+  max-height: 100%;
+  overflow: auto;
+ 	font-family:"lemonada";
+
+  text-align:center;
+}
+
+@media screen and (max-width: 700px){
+  .box{
+    width: 70%;
+  }
+  .popup{
+    width: 70%;
+  }
+}
+.message_content
+{
+		
+		border-style:solid;
+		border-width:1px;
+		border-color:rgb(245,245,245);
+		font-family:"Cormorant Garamond Medium";
+		font-weight:bold;
+		font-size:19px;
+		width:95%;
+		padding:5px;
+		text-align:center;
+		background-color:rgb(245,245,245);
+	    box-shadow: 10px 10px 5px #888888;
+}
+.remove_pop_a
+{
+		text-decoration:none;
+		color:rgb(150,10,10);
+		font-size:16px;
+		
+}
+.remove_pop_a:hover
+{
+		color:rgb(150,10,10);
+	
+		
+}
+.login_menu
+{
+		margin-left:520px;
+		
+		font-family:'Times New Roman';
+		font-size:15px;
+		color:rgb(130,130,130);
+		text-decoration: none;
+}
+.login_menu:hover
+{
+		color:rgb(240,240,240);
+}
+
+.no
+{
+		font-size:18px;
+		font-family:"Cormorant Garamond Medium";
+}
+
+.most
+{
+	height:200px;
+	max-height:200px;
+	vertical-align:middle;
+	display:inline-block;
+	font-size:20px;
+	margin-left:20px;
+	margin-right:20px;
+	font-weight:bold;
+	font-family:"Architects Daughter";
+}
+
+.image {
+  opacity: 1;
+  width: 250px;
+  height: 150px;
+  transition: .5s ease;
+  backface-visibility: hidden;
+	margin-right:20px;
+ }
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  margin-top:60px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%)
+}
+
+.container:hover .image {
+  opacity: 0.7;
+}
+
+.container:hover .middle {
+  opacity: 1;
+}
+
+.text {
+  background:rgba(255,255,255,0);
+  color: black;
+  font-size: 25px; 
+	font-weight:bold;
+  margin-right:380px;
+ font-family:Indie Flower;
+}
+</style>
+
+<script>
+var makePath = function(form)
+{
+ form.action = document.getElementById('location').value;
+};
+function required()
+{
+var data=document.forms["form1"]["data"].value;
+if(data=='')
+	{
+		alert("enter dish to search");
+		document.form1.action="";
+	}
+else
+	{
+	
+		document.form1.action="http://localhost:5000/search";
+		document.form1.method="post";
+
+	}
+
+}
+</script>
+<title> Go Foody </title>
+</head>
+
+
+
+
+
+<body>
+
+
+<h1>
+
+<img src="{{url_for('static',filename='food.jpg')}}"  width="80" height="60">
+<span class="h1span">
+
+Go Foody
+</span>
+
+<span>
+
+
+<a href="/customer_logout" class="login_menu">LOGOUT</></a>
+<a href="/help" class="help">HELP</></a>
+<a href="/cartshow" class="help">CART</a>
+<a href="/orders" class="help">MY ORDERS</a>
+<a class="button" href="#popup1">MESSAGES</a>
+
+
+</span>
+</h1>
+
+
+<div id="sb-search" class="sb-search">
+	<form name='form1' onsubmit='required()'>
+			<input class="sb-search-input" placeholder="Enter the dish to search..." type="search " name="data" id="search">
+			<input class="sb-search-submit" type="submit" value="">
+			<span class="sb-icon-search"></span>
+			</form>
+</div>
+	<script src="{{url_for('static',filename='search/js/classie.js')}}"></script>
+		<script src="{{url_for('static',filename='search/js/uisearch.js')}}"></script>
+		<script>
+			new UISearch( document.getElementById( 'sb-search' ) );
+		</script>		
+
+		
+<div id="popup1" class="overlay">
+	<div class="popup">
+		<h2>Messages</h2>
+		<a class="close" href="#">&times;</a>
+		<div class="content22">
+			{%if response%}
+			{%for x in response%}
+			{%if x[2]==admin%}
+			<div class="message_content">
+			from : {{x[3]}}
+			<br>
+			subject : {{x[1]}}
+			<br>
+			response : {{x[2]}}
+			<br>
+			</div>
+			<br>
+			{%endif%}
+			{%if x[2]!=admin%}
+			<div class="message_content">
+			from : {{x[3]}}
+			<br>
+			subject : {{x[1]}}
+			<br>
+			response : {{x[2]}}
+			<br>
+			</div>
+			<br>
+			{%endif%}
+			{%endfor%}
+			<a class="remove_pop_a" href="/remove_response">remove all</a>
+			{%else%}
+			<span class="no">no messages</span>
+			{%endif%}
+    </div>
+	</div>
+	
+
+	
+</div>
+<div class="crossfade">
+
+  <figure></figure>
+
+  <figure></figure>
+
+  <figure></figure>
+
+  <figure></figure>
+
+  <figure></figure>
+
+<div class="top">
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<span class="order1">
+“YOU DONT A NEED A SILVER FORK TO EAT GOOD FOOD” 
+</span>
+<br>
+<br>
+
+<span class="order2">
+
+Order food online from the best restaurants near you
+</span>	
+
+<br>
+<form onsubmit='makePath(this);'>
+
+<select id="location" class="place" required>
+  <option class="placeo" value="">None</option>
+  <option class="placeo" value="/TLY">Thalassery</option>
+  <option class="placeo" value="/KANNUR">Kannur</option>
+  <option class="placeo" value="/CALICUT">Calicut</option>
+</select>
+
+<button class="showrestaurants">FIND RESTAURANTS</button>
+</form>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</div>
+</div>
+
+
+<img src="{{url_for('static',filename='kfc_homepage.png')}}" width="400" height="250" style="margin-left:50px;margin-top:10px">
+<img src="{{url_for('static',filename='pizza_homepage.jpg')}}" width="400" height="250">
+<img src="{{url_for('static',filename='baskins_homepage.jpg')}}" width="400" height="250">
+<img src="{{url_for('static',filename='robert.jpg')}}" width="" height="">
+
+<br>
+<br>
+<span class="most">MOST ORDERED<br> DISHES</span>
+
+{%for x in most_ordered%}
+<span class="container">
+
+  <a href="/quantity/{{x[0]}}/{{x[1]}}/{{x[2]}}/{{x[5]}}/{{x[4]}}"><img src="{{url_for('static',filename='dish/'+x[4])}}" alt="Avatar" class="image" style="width:250px">
+  <span class="middle">
+    <span class="text">{{x[2]}}<br>Rs.{{x[5]}}</span>
+  </span></span>
+	</a>
+{%endfor%}
+
+<img src="{{url_for('static',filename='ordering.jpg')}}" width="100%" height="450">
+
+
+
+
+<!-- menu -->
+	<nav class="nav">
+		<img class="menu_image" src="{{url_for('static',filename='food.jpg')}}"  width="70" height="70">
+		<br>
+		<span class="menu_heading">Go Foody</span>
+		<ul>
+			<li><a class="nava" href="/homepage_customer">Home</a></li>
+			<li><a class="nava" href="/about">About Us</a></li>
+			<li><a class="nava" href="/contact">Contact</a></li>
+			<li><a class="nava" href="/privacy_policy">Privacy Policy</a></li>
+			<li><a class="nava" href="/security">Security</a></li>		
+			<li><a class="nava" href="/terms">Terms</a></li>		
+
+		</ul>
+	</nav>
+
+
+<div class="last" >
+<br>
+<div class="motto">
+We uphold the motto <span class="bullet">“making online food ordering fast and easy”</span>. Our service allows you<br> to find all of the restaurants available nearby, which can deliver to your house
+</div>
+<br><br>
+<b><span class="head_left">Ordering food is easy as ABC Only 4 steps to make the order, easy payment, available 24/7</span>
+</b>
+
+<div class="definition">
+<br><br>
+The <span class="bullet">challenge</span> for us is to make a versatile website that is simple and easy to use.<br>
+What we have learned is that ordering food online is way easier, faster and has <br>
+less complications than calling. What makes Go Foody better than the traditional order<br>
+over the phone method?
+
+<ul class="bullet"><li><span style="color:rgb(200,200,200);">24/7: Our site and app are available 24/7 with the feature to pre-order. You can plan your <br>
+meal ahead from the best restaurants near you and avoid the rush hours</span></li>
+<li><span style="color:rgb(200,200,200);">Free to use: Browse through 4000+ restaurant menus for free</span></li>
+<li><span style="color:rgb(200,200,200);">Order food in 4 simple steps</span></li>
+<li><span style="color:rgb(200,200,200);">Easy Payment: Do you prefer online payment? We accept all major credit cards as well as</li>
+<li><span style="color:rgb(200,200,200);">If you prefer to pay cash on delivery in Indian Rupees, we’ve got that covered too.</span></li>
+</ul>
+</div>
+<br><hr width="90%"><br>
+<div class="services">
+<b><span class="head_right">Our Services</span></b>
+<br><br>
+Should you have any concerns or would you want to give us feedback, please do not hesitate to contact our customer service
+team by using our Live Chat feature on your GoFoody App or website, or by sending an email at customercare@GoFoody.in. 
+Go Foody India Corporate Office is located at Kayyath Villa, Kayyath Road , Thalassery.
+</div>
+
+<br><hr width="90%"><br>
+<b><span class="head_left">Freedom of Choice </span></b><br><br>
+<div class="freedom">
+
+<span class="bullet">Breakfast, Lunch, Dinner or Late Night delivery</span> Go Foody is just the right place for you. 
+<br>Simply pick one of the thousands of diverse restaurants available near you. From traditional meals to
+<br>well-known fast food chains like Dominos, Pizza Hut and Box8 along with delicate cuisines such
+<br> as Japanese, Biryani or Punjabi - you can find it all! All it takes is 4 easy steps:
+
+<ol class="bullet"><li><span style="color:rgb(200,200,200);">Choose your city and area</span></li>
+<li><span style="color:rgb(200,200,200);">Pick one of the 10000+ restaurant</span></li>
+<li><span style="color:rgb(200,200,200);">Place your order and pay online or cash on delivery</span></li>
+<li><span style="color:rgb(200,200,200);">Enjoy the freshly prepared food delivered to you!</span></li>
+</ol>
+
+</div>
+
+<br><br>
+
+</div>
+</body>
+</html>
