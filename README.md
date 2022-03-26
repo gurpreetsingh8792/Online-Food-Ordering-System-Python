@@ -36,3 +36,6 @@ response (username TEXT, sub TEXT, message TEXT, sender TEXT)
 reviews (username TEXT, rest TEXT, place TEXT, date TEXT, rating INTEGER, review TEXT, id INTEGER PRIMARY KEY AUTOINCREMENT)
 
 search (item text NOT NULL, def TEXT, price INTEGER NOT NULL, category TEXT, place TEXT, rest TEXT, dish_image text)
+
+# Website
+https://go7food.herokuapp.com/
